@@ -16,13 +16,15 @@ struct napis {
 class GameManager {
     sf::RectangleShape wall;
     snake &wunsz;
+    fruit &owocek;
     napis text;
 public:
-    GameManager(snake &wunsz);
+    GameManager(snake &wunsz, fruit &owocek);
     void drawGameManager(sf::RenderWindow &okno);
     sf::Vector2f getPosForSizeCounter();
     void CounterValUpdate();
     void DefineGstate();
+    void restartGame(sf::Event &event);
 };
 
 

@@ -5,12 +5,12 @@
 int main() {
     srand( time( NULL ) );
     // create the window
-    sf::RenderWindow okno(sf::VideoMode(1000, 600, 32), "Snake");
+    sf::RenderWindow okno(sf::VideoMode(950, 600, 32), "Snake");
     //ark.setVerticalSyncEnabled(true);
     okno.setFramerateLimit(60);
     fruit pomarancza;
     snake wunsz(okno, pomarancza);
-    GameManager mgr(wunsz);
+    GameManager mgr(wunsz,pomarancza);
 
     // run the program as long as the window is open
     while (okno.isOpen())
@@ -20,6 +20,7 @@ int main() {
         while (okno.pollEvent(event))
         {
             wunsz.MoveSnake(event);
+            mgr.restartGame(event);
             // "close requested" event: we close the window
             if (event.type == sf::Event::Closed)
                 okno.close();

@@ -3,7 +3,7 @@
 //
 
 #include "GameManager.h"
-GameManager::GameManager(snake &temp): wunsz(temp) {
+GameManager::GameManager(snake &temp, fruit &temp2): wunsz(temp), owocek(temp2) {
     wall.setPosition((wunsz.getMoveSpace()+1)*wunsz.getBlockSize(),0);
     wall.setSize(sf::Vector2f(wunsz.getBlockSize(),wunsz.getBlockSize()*wunsz.getMoveSpace()));
     wall.setFillColor(sf::Color(255,255,255));
@@ -23,7 +23,7 @@ GameManager::GameManager(snake &temp): wunsz(temp) {
     text.GState.setFont(text.font);
     text.GState.setPosition(sf::Vector2f(text.Counter.getPosition().x,text.Counter.getPosition().y+60));
     text.GState.setFillColor(sf::Color::White);
-    text.GState.setCharacterSize(30);
+    text.GState.setCharacterSize(40);
 
 }
 void GameManager::drawGameManager(sf::RenderWindow &okno) {
@@ -46,9 +46,21 @@ void GameManager::CounterValUpdate() {
 
 void GameManager::DefineGstate() {
     if(wunsz.getGameState()==RUNNING){
-        text.GState.setString("RUNNING");
+        text.GState.setString(" ");
     }
     else if (wunsz.getGameState()==FINISHED){
-        text.GState.setString("FINISHED");
+        text.GState.setString("GAME OVER R TO RESTART" );
+        text.GState.setPosition(wunsz.getBlockSize()*wunsz.getMoveSpace()/2 - text.GState.getGlobalBounds().width/2,
+                wunsz.getBlockSize()*wunsz.getMoveSpace()/2 - text.GState.getGlobalBounds().height/2);
+    }
+}
+
+void GameManager::restartGame(sf::Event &event) {
+    if(wunsz.getGameState()==FINISHED) {
+        if (event.type == sf::Event::TextEntered) {
+            if (event.text.unicode == 114) {
+                wunsz.setupGameStart();
+            }
+        }
     }
 }

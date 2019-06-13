@@ -36,15 +36,15 @@ struct window{
 
 class snake {
     GS GameState;
-    entitySnake EntSnake;
     window plansza;
     direc direction;
     sf::RenderWindow &okno;
     float moveVal;
-    float speed;
     float movespace;
-    int randVal;
     fruit &owocek;
+    float speed;
+    int randVal;
+    entitySnake EntSnake;
 public:
     snake(sf::RenderWindow &okno, fruit &owocek);
     void MoveSnake(sf::Event &event);
@@ -56,6 +56,9 @@ public:
     sf::Vector2f getBoardPos();
     sf::Vector2f getBoardSize();
     GS getGameState();
+    void collisionWalls();
+    void collisionWithSelf();
+    void setupGameStart();
 
 
 };
