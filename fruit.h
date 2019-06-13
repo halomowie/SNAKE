@@ -6,13 +6,13 @@
 #define WAZ_FRUIT_H
 
 
-#include <Graphics/RectangleShape.hpp>
+#include <SFML/Graphics.hpp>
 
 class fruit {
 
 public:
     float size;
-    sf::RectangleShape blok;
+    sf::CircleShape blok;
     fruit();
 
 };

@@ -3,7 +3,7 @@ project(waz)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(waz main.cpp snake.cpp snake.h fruit.cpp fruit.h)
+add_executable(waz main.cpp snake.cpp snake.h fruit.cpp fruit.h GameManager.cpp GameManager.h)
 
 
 set(SFML_PATH "C:/cpp/SFML-2.5.1" ${CMAKE_MODULE_PATH})

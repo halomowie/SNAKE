@@ -4,15 +4,17 @@
 
 #include "snake.h"
 
-snake::snake(sf::RenderWindow &temp1): okno(temp1)  {
-    movespace=20;
-    speed=300;
+snake::snake(sf::RenderWindow &temp1, fruit &temp): okno(temp1), owocek(temp)  {
+    GameState=RUNNING;
+    movespace=30;
+    randVal=movespace;
+    speed=150;
     EntSnake.blocknumber=3;
     direction.x=0;
     direction.y=-1;
     plansza.size.x = okno.getSize().x;
     plansza.size.y = okno.getSize().y;
-    EntSnake.blocksize=plansza.size.x/movespace;
+    EntSnake.blocksize=plansza.size.y/movespace;
     moveVal=EntSnake.blocksize;
     for (int i = 1; i < 30; ++i) {
         EntSnake.blok[i].setSize(sf::Vector2f(EntSnake.blocksize,EntSnake.blocksize));
@@ -26,13 +28,30 @@ snake::snake(sf::RenderWindow &temp1): okno(temp1)  {
     EntSnake.blok[1].setPosition(sf::Vector2f(10*EntSnake.blocksize,11*EntSnake.blocksize));
     EntSnake.blok[2].setPosition(sf::Vector2f(10*EntSnake.blocksize,12*EntSnake.blocksize));
 
+    owocek.size=EntSnake.blocksize;
+    owocek.blok.setRadius(owocek.size/2);
+    owocek.blok.setPosition(owocek.size*(std::rand() % randVal),owocek.size*(std::rand()% randVal));
+    for (int j = 0; j < 100; ++j) {
+        if(owocek.blok.getPosition()==EntSnake.blok[j].getPosition()){
+            owocek.blok.setPosition(owocek.size*(std::rand() % randVal),owocek.size*(std::rand()% randVal));
+        }
+    }
+
+    for (int k = EntSnake.blocknumber; k <100 ; ++k) {
+        EntSnake.blok[k].setPosition(sf::Vector2f(-100,-100));
+
+    }
+
+
+
+
 
 }
 
 void snake::DrawSnake(sf::RenderWindow &okno, fruit &owocek) {
 
     std::cout << EntSnake.blocknumber << std::endl;
-    sf::Vector2f pos[50];
+    sf::Vector2f pos[900];
     if (EntSnake.tick.getElapsedTime().asMilliseconds() > speed) {
         for (int i = 0; i < EntSnake.blocknumber-1 ; ++i) {
             pos[i]=EntSnake.blok[i].getPosition();
@@ -43,8 +62,17 @@ void snake::DrawSnake(sf::RenderWindow &okno, fruit &owocek) {
         }
         if(EntSnake.blok[0].getPosition().x == owocek.blok.getPosition().x
            and EntSnake.blok[0].getPosition().y == owocek.blok.getPosition().y) {
-            owocek.blok.setFillColor(sf::Color(84, 82, 80));
             EntSnake.blocknumber += 1;
+            if(EntSnake.blocknumber % 5 ==0){
+                speed-=speed*0.1;
+            }
+            owocek.blok.setPosition(owocek.size*(std::rand() % randVal),owocek.size*(std::rand()% randVal));
+            for (int j = 0; j < 100; ++j) {
+                if(owocek.blok.getPosition()==EntSnake.blok[j].getPosition()){
+                    owocek.blok.setPosition(owocek.size*(std::rand() % randVal),owocek.size*(std::rand()% randVal));
+                }
+            }
+
         }
 
             EntSnake.tick.restart();
@@ -86,23 +114,26 @@ float snake::getBlockSize() {
     return EntSnake.blocksize;
 }
 
-void snake::SetFruitPos(fruit &owocek) {
-    owocek.size=EntSnake.blocksize;
-    owocek.blok.setSize(sf::Vector2f(owocek.size,owocek.size));
-    owocek.blok.setPosition(owocek.size*5,owocek.size*5);
-}
 
-bool snake::isCollision(sf::RectangleShape a, sf::RectangleShape b) {
-    a.getGlobalBounds().intersects(b.getGlobalBounds());
-    b.setPosition(sf::Vector2f(-100,-100));
-}
+
 
 void snake::DrawOwocek(sf::RenderWindow &okno, fruit &owocek) {
-    SetFruitPos(owocek);
     okno.draw(owocek.blok);
 }
 
-void snake::ExpandSnake(bool isCol) {
-    isCol==true;
-    EntSnake.blocknumber+=3;
+
+float snake::getMoveSpace() {
+    return movespace;
+}
+
+int snake::getSnakeSize() {
+    return EntSnake.blocknumber;
+}
+
+sf::Vector2f snake::getBoardSize() {
+
+}
+
+GS snake::getGameState() {
+    return GameState;
 }

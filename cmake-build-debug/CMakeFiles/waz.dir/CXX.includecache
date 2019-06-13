@@ -7,7 +7,7 @@
 #IncludeRegexTransform: 
 
 C:/Users/Daniel/Desktop/Cpp/waz/fruit.h
-Graphics/RectangleShape.hpp
+SFML/Graphics.hpp
 -
 
 C:/Users/Daniel/Desktop/Cpp/waz/snake.cpp
@@ -20,6 +20,10 @@ SFML/Graphics.hpp
 fruit.h
 C:/Users/Daniel/Desktop/Cpp/waz/fruit.h
 iostream
+-
+ctime
+-
+cstdlib
 -
 
 C:/cpp/SFML-2.5.1/include/SFML/Config.hpp

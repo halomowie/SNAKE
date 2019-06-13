@@ -8,6 +8,9 @@
 #include <SFML/Graphics.hpp>
 #include "fruit.h"
 #include <iostream>
+#include <ctime>
+#include <cstdlib>
+enum GS {RUNNING,FINISHED};
 struct direc {
     float x;
     float y;
@@ -15,8 +18,8 @@ struct direc {
 struct entitySnake {
     float blocksize;
     sf::Clock tick;
-    sf::RectangleShape blok[50];
-    float blocknumber;
+    sf::RectangleShape blok[900];
+    int blocknumber;
 };
 struct windowsize {
     float x;
@@ -32,6 +35,7 @@ struct window{
 };
 
 class snake {
+    GS GameState;
     entitySnake EntSnake;
     window plansza;
     direc direction;
@@ -39,15 +43,20 @@ class snake {
     float moveVal;
     float speed;
     float movespace;
+    int randVal;
+    fruit &owocek;
 public:
-    snake(sf::RenderWindow &okno);
+    snake(sf::RenderWindow &okno, fruit &owocek);
     void MoveSnake(sf::Event &event);
     void DrawSnake(sf::RenderWindow &okno, fruit &owocek);
     void DrawOwocek(sf::RenderWindow &okno, fruit &owocek);
-    void SetFruitPos(fruit &owocek);
     float getBlockSize();
-    bool isCollision(sf::RectangleShape a, sf::RectangleShape b);
-    void ExpandSnake(bool isCol);
+    float getMoveSpace();
+    int getSnakeSize();
+    sf::Vector2f getBoardPos();
+    sf::Vector2f getBoardSize();
+    GS getGameState();
+
 
 };
 

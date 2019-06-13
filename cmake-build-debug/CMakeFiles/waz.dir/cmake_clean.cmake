@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/waz.dir/main.cpp.obj"
   "CMakeFiles/waz.dir/snake.cpp.obj"
   "CMakeFiles/waz.dir/fruit.cpp.obj"
+  "CMakeFiles/waz.dir/GameManager.cpp.obj"
   "waz.pdb"
   "waz.exe"
   "waz.exe.manifest"

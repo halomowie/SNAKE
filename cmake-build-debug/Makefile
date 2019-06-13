@@ -122,6 +122,33 @@ waz/fast:
 	$(MAKE) -f CMakeFiles\waz.dir\build.make CMakeFiles/waz.dir/build
 .PHONY : waz/fast
 
+GameManager.obj: GameManager.cpp.obj
+
+.PHONY : GameManager.obj
+
+# target to build an object file
+GameManager.cpp.obj:
+	$(MAKE) -f CMakeFiles\waz.dir\build.make CMakeFiles/waz.dir/GameManager.cpp.obj
+.PHONY : GameManager.cpp.obj
+
+GameManager.i: GameManager.cpp.i
+
+.PHONY : GameManager.i
+
+# target to preprocess a source file
+GameManager.cpp.i:
+	$(MAKE) -f CMakeFiles\waz.dir\build.make CMakeFiles/waz.dir/GameManager.cpp.i
+.PHONY : GameManager.cpp.i
+
+GameManager.s: GameManager.cpp.s
+
+.PHONY : GameManager.s
+
+# target to generate assembly for a file
+GameManager.cpp.s:
+	$(MAKE) -f CMakeFiles\waz.dir\build.make CMakeFiles/waz.dir/GameManager.cpp.s
+.PHONY : GameManager.cpp.s
+
 fruit.obj: fruit.cpp.obj
 
 .PHONY : fruit.obj
@@ -212,6 +239,9 @@ help:
 	@echo ... rebuild_cache
 	@echo ... waz
 	@echo ... edit_cache
+	@echo ... GameManager.obj
+	@echo ... GameManager.i
+	@echo ... GameManager.s
 	@echo ... fruit.obj
 	@echo ... fruit.i
 	@echo ... fruit.s

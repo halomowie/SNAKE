@@ -1,13 +1,16 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "snake.h"
+#include "GameManager.h"
 int main() {
+    srand( time( NULL ) );
     // create the window
-    sf::RenderWindow okno(sf::VideoMode(600, 600, 32), "Snake");
+    sf::RenderWindow okno(sf::VideoMode(1000, 600, 32), "Snake");
     //ark.setVerticalSyncEnabled(true);
     okno.setFramerateLimit(60);
     fruit pomarancza;
-    snake wunsz(okno);
+    snake wunsz(okno, pomarancza);
+    GameManager mgr(wunsz);
 
     // run the program as long as the window is open
     while (okno.isOpen())
@@ -30,10 +33,10 @@ int main() {
         // draw everything here...
         wunsz.DrawOwocek(okno,pomarancza);
         wunsz.DrawSnake(okno,pomarancza);
+        mgr.drawGameManager(okno);
 
         // end the current frame
         okno.display();
-        //std::cout << ark.getSize().x << " " << ark.getSize().y << std::endl;
     }
 
     return 0;

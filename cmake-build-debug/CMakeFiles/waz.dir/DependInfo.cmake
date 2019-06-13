@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "C:/Users/Daniel/Desktop/Cpp/waz/GameManager.cpp" "C:/Users/Daniel/Desktop/Cpp/waz/cmake-build-debug/CMakeFiles/waz.dir/GameManager.cpp.obj"
   "C:/Users/Daniel/Desktop/Cpp/waz/fruit.cpp" "C:/Users/Daniel/Desktop/Cpp/waz/cmake-build-debug/CMakeFiles/waz.dir/fruit.cpp.obj"
   "C:/Users/Daniel/Desktop/Cpp/waz/main.cpp" "C:/Users/Daniel/Desktop/Cpp/waz/cmake-build-debug/CMakeFiles/waz.dir/main.cpp.obj"
   "C:/Users/Daniel/Desktop/Cpp/waz/snake.cpp" "C:/Users/Daniel/Desktop/Cpp/waz/cmake-build-debug/CMakeFiles/waz.dir/snake.cpp.obj"

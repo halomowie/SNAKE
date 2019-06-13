@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/Daniel/Desktop/Cpp/waz/GameManager.cpp">
+			<Option target="waz"/>
+		</Unit>
+		<Unit filename="C:/Users/Daniel/Desktop/Cpp/waz/GameManager.h">
+			<Option target="waz"/>
+		</Unit>
 		<Unit filename="C:/Users/Daniel/Desktop/Cpp/waz/fruit.cpp">
 			<Option target="waz"/>
 		</Unit>
